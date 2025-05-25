@@ -13,7 +13,6 @@ contract Airdrop {
     error Airdrop__InvalidProof();
     error Airdrop__AlreadyClaimed();
 
-    address[] claimers;
     bytes32 private immutable i_merkleRoot;
     IERC20 private immutable i_airdropToken;
     mapping(address claimer => bool claimed) private s_hasClaimed;
