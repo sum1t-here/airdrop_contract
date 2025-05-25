@@ -5,7 +5,7 @@ import {IERC20, SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeE
 import {MerkleProof} from "@openzeppelin/contracts/utils/cryptography/MerkleProof.sol";
 
 contract Airdrop {
-    using SafeERC20 for IERC20;
+    using SafeERC20 for IERC20; // Prevent sending tokens to recipients who can’t receive
 
     // some lists of addresses
     // allow someone in the list to claim airdrop
@@ -45,7 +45,7 @@ contract Airdrop {
         if (!MerkleProof.verify(merkleProof, i_merkleRoot, leaf)) {
             revert Airdrop__InvalidProof();
         }
-        
+
         // mint the tokens
         s_hasClaimed[account] = true;
         emit Claimed(account, amount);
@@ -55,7 +55,7 @@ contract Airdrop {
     function getMerkleRoot() external view returns (bytes32) {
         return i_merkleRoot;
     }
-    
+
     function getAirdropToken() external view returns (IERC20) {
         return i_airdropToken;
     }
