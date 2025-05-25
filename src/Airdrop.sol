@@ -39,7 +39,7 @@ contract Airdrop is EIP712 {
      * @param amount The amount of the airdrop
      * @param merkleProof The merkle proof of the account
      */
-    function claim(address account, uint256 amount, bytes32[] calldata merkleProof, uint8 v, bytes32 s, bytes32 r) external {
+    function claim(address account, uint256 amount, bytes32[] calldata merkleProof, uint8 v, bytes32 r, bytes32 s) external {
         // check if the account has already claimed
         if (s_hasClaimed[account]) {
             revert Airdrop__AlreadyClaimed();
