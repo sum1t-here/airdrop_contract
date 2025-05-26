@@ -34,12 +34,40 @@ contract GenerateInput is Script {
         string memory json = string.concat('{ "types": ["address", "uint"], "count":', countString, ',"values": {');
         for (uint256 i = 0; i < whitelist.length; i++) {
             if (i == whitelist.length - 1) {
-                json = string.concat(json, '"', vm.toString(i), '"', ': { "0":', '"',whitelist[i],'"',', "1":', '"',amountString,'"', ' }');
+                json = string.concat(
+                    json,
+                    '"',
+                    vm.toString(i),
+                    '"',
+                    ': { "0":',
+                    '"',
+                    whitelist[i],
+                    '"',
+                    ', "1":',
+                    '"',
+                    amountString,
+                    '"',
+                    " }"
+                );
             } else {
-            json = string.concat(json, '"', vm.toString(i), '"', ': { "0":', '"',whitelist[i],'"',', "1":', '"',amountString,'"', ' },');
+                json = string.concat(
+                    json,
+                    '"',
+                    vm.toString(i),
+                    '"',
+                    ': { "0":',
+                    '"',
+                    whitelist[i],
+                    '"',
+                    ', "1":',
+                    '"',
+                    amountString,
+                    '"',
+                    " },"
+                );
             }
         }
-        json = string.concat(json, '} }');
+        json = string.concat(json, "} }");
 
         return json;
     }

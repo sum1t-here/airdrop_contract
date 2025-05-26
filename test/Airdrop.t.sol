@@ -19,7 +19,7 @@ contract AirdropTest is Test {
     address user;
     uint256 userPrivKey;
 
-    function setUp() public{
+    function setUp() public {
         token = new AirdropToken();
         airdrop = new Airdrop(ROOT, token);
         token.mint(token.owner(), AMOUNT_TO_SEND);
