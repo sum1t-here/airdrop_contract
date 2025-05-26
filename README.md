@@ -1,66 +1,90 @@
-## Foundry
+# 🌿 Merkle Airdrop
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+A secure, gas-efficient smart contract system to distribute ERC-20 tokens using Merkle Tree proofs and ECDSA signatures. Built with Foundry, this system ensures that only eligible users can claim their tokens exactly once.
 
-Foundry consists of:
+## 📌 Features
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+- ✅ Merkle Proof-based eligibility
+- 🔐 ECDSA Signature-based claim validation
+- 🚫 One-time claim enforcement per wallet
+- 📦 Foundry DevOpsTools integration
+- 🧪 Includes claim interaction script
 
-## Documentation
-
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
-```shell
-$ forge build
+## 📁 Project Structure
+```
+.github/
+  workflows/
+    test.yml
+lib/
+  forge-std
+  foundry-devops
+  murky
+  openzeppelin-contracts
+script/
+  target/
+    input.json
+    output.json
+  DeployAirdrop.s.sol
+  GenerateInput.s.sol
+  Interact.s.sol
+  MakeMerkle.s.sol
+src/
+  Airdrop.sol
+  AirdropToken.sol
+test/
+  Airdrop.t.sol
+.gitignore
+.gitmodules
+foundry.toml
+Makefile
+README.md
 ```
 
-### Test
+---
 
-```shell
-$ forge test
+## ⚙️ Requirements
+
+- [Foundry](https://book.getfoundry.sh/)
+- Anvil (optional, for local testing)
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/sum1t-here/airdrop_contract
+
+cd airdrop_contract
 ```
 
-### Format
-
-```shell
-$ forge fmt
+### 2. Install Dependencies
+```bash
+forge install
 ```
 
-### Gas Snapshots
-
-```shell
-$ forge snapshot
+### 3. Compile Contracts
+```bash
+forge build
 ```
 
-### Anvil
+## 🧾 How the Claim Works
+Users must provide:
 
-```shell
-$ anvil
-```
+- Their address
 
-### Deploy
+- The airdrop amount
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
+- A valid Merkle proof
 
-### Cast
+- A signed message (ECDSA signature) from the deployer or trusted backend
 
-```shell
-$ cast <subcommand>
-```
+## 👨‍💻 Author
+Sumit Mazumdar
 
-### Help
+Blockchain Developer
 
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+GitHub: [@sum1t-here](https://github.com/sum1t-here)
+
+X: [@sum1t_here](https://x.com/sum1t_here)
